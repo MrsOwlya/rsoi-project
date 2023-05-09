@@ -1,0 +1,29 @@
+[
+{
+  "model": "bonus.privilege",
+  "pk": 1,
+  "fields": {
+    "username": "owlya",
+    "status": "GOLD",
+    "balance": 5000
+  }
+},
+{
+  "model": "bonus.privilege",
+  "pk": 2,
+  "fields": {
+    "username": "Test Max",
+    "status": "GOLD",
+    "balance": 5000
+  }
+},
+{
+  "model": "bonus.privilege",
+  "pk": 3,
+  "fields": {
+    "username": "auth0|63bd33c830253100218befed",
+    "status": "GOLD",
+    "balance": 5000
+  }
+}
+]

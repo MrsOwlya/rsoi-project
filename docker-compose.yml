@@ -1,7 +1,7 @@
 version: "3"
 services:
-  postgres:
-    image: library/postgres:15
+  db:
+    image: library/postgres:13
     container_name: postgres
     restart: on-failure
     environment:
@@ -39,6 +39,41 @@ services:
       KAFKA_TRANSACTION_STATE_LOG_REPLICATION_FACTOR: 1
     depends_on:
       - zookeeper
+
+  gateway:
+    container_name: gateway
+    build: ./GatewayService/
+    restart: on-failure
+    volumes:
+      - ./GatewayService/:/GatewayService/
+    ports:
+      - '8080:8080'
+  ticket:
+    container_name: ticket
+    build: ./TicketService/
+    restart: on-failure
+    volumes:
+      - ./TicketService/:/TicketService/
+    ports:
+      - '8070:8070'
+  flight:
+    container_name: flight
+    build: ./FlightService/
+    restart: on-failure
+    volumes:
+      - ./FlightService/:/FlightService/
+    ports:
+      - '8060:8060'
+  bonus:
+    container_name: bonus
+    build: ./BonusService/
+    restart: on-failure
+    volumes:
+      - ./BonusService/:/BonusService/
+    ports:
+      - '8050:8050'
+    depends_on:
+      - db
 
 # TODO добавить сервисы
 
